@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button, Icon } from 'semantic-ui-react'
 
 function OrderForm({ orderDescription, handleInputChange, handleCreateOrder }) {
-  const createBtnDisabled = orderDescription.trim() === ''
+  const createBtnDisabled = !orderDescription || orderDescription.trim() === ''
   return (
     <Form onSubmit={handleCreateOrder}>
       <Form.Group>

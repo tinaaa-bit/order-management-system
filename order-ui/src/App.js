@@ -11,7 +11,7 @@ import UserPage from './components/user/UserPage'
 
 function AppLayout() {
     const location = useLocation()
-    const hideNavbar = ['/', '/login', '/signup', '/userpage'].includes(location.pathname)
+    const hideNavbar = ['/', '/login', '/signup', '/userpage', '/adminpage'].includes(location.pathname)
 
     return (
         <>

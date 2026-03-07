@@ -10,7 +10,9 @@ function UserTable({ users, userUsernameSearch, handleInputChange, handleDeleteU
       </Table.Row>
     )
   } else {
-    userList = users.map(user => {
+    userList = users
+        .filter(user => user.role === 'USER')
+        .map(user => {
       return (
         <Table.Row key={user.id}>
           <Table.Cell collapsing>
