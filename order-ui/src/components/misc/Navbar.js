@@ -16,34 +16,30 @@ function Navbar() {
   }
 
   const getHomePath = () => {
-    if (!isAuthenticated) return '/login'
+    if (!isAuthenticated) return '/'
     if (role === 'ADMIN') return '/adminpage'
     if (role === 'USER') return '/userpage'
-    return '/login'
+    return '/'
   }
 
   return (
-      <Menu inverted color='violet' stackable size='massive' style={{ borderRadius: 0 }}>
+      <Menu inverted color='violet' stackable size='large' style={{ borderRadius: 0, marginBottom: 0 }}>
         <Container>
-          <Menu.Item header>Order-UI</Menu.Item>
-          <Menu.Item as={Link} to={getHomePath()}>Home</Menu.Item>
+          <Menu.Item header as={Link} to={getHomePath()}>
+            Order-UI
+          </Menu.Item>
 
-          {isAuthenticated && role === 'ADMIN' && (
-              <Menu.Item as={Link} to="/adminpage">AdminPage</Menu.Item>
-          )}
-
-          {isAuthenticated && role === 'USER' && (
-              <Menu.Item as={Link} to="/userpage">UserPage</Menu.Item>
+          {isAuthenticated && (
+              <Menu.Item as={Link} to={getHomePath()}>
+                Home
+              </Menu.Item>
           )}
 
           <Menu.Menu position='right'>
-            {!isAuthenticated && <Menu.Item as={Link} to="/login">Login</Menu.Item>}
-            {!isAuthenticated && <Menu.Item as={Link} to="/signup">Sign Up</Menu.Item>}
-
             {isAuthenticated && <Menu.Item header>{`Hi ${name}`}</Menu.Item>}
 
             {isAuthenticated && (
-                <Menu.Item as={Link} to="/login" onClick={logout}>
+                <Menu.Item as={Link} to="/" onClick={logout}>
                   Logout
                 </Menu.Item>
             )}
