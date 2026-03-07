@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button, Input, Table } from 'semantic-ui-react'
 
-function UserTable({ users, userUsernameSearch, handleInputChange, handleDeleteUser, handleSearchUser }) {
+function UserTable({ users, userUsernameSearch, handleInputChange, deleteUser, handleSearchUser }) {
   let userList
   if (users.length === 0) {
     userList = (
@@ -22,7 +22,7 @@ function UserTable({ users, userUsernameSearch, handleInputChange, handleDeleteU
               size='small'
               icon='trash'
               disabled={user.username === 'admin'}
-              onClick={() => handleDeleteUser(user.username)}
+              onClick={() => deleteUser(user.username)}
             />
           </Table.Cell>
           <Table.Cell>{user.id}</Table.Cell>

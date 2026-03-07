@@ -18,6 +18,8 @@ function AdminPage() {
   const [activeSection, setActiveSection] = useState('users')
   const [profileOpen, setProfileOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [numberOfUsers, setNumberOfUsers] = useState(0)
+  const [numberOfOrders, setNumberOfOrders] = useState(0)
 
   const fetchUsers = async () => {
     try {
@@ -44,14 +46,29 @@ function AdminPage() {
     setIsLoading(false)
   }
 
+  const fetchAnalytics = async () => {
+    try {
+      const usersResponse = await orderApi.numberOfUsers()
+      const ordersResponse = await orderApi.numberOfOrders()
+
+      setNumberOfUsers(usersResponse.data)
+      setNumberOfOrders(ordersResponse.data)
+
+    } catch (error) {
+      handleLogError(error)
+    }
+  }
+
   useEffect(() => {
     fetchData()
+    fetchAnalytics()
   }, [])
 
   const deleteUser = async (username) => {
     try {
       await orderApi.deleteUser(user, username)
-      fetchUsers()
+      await fetchData()
+      await fetchAnalytics()
     } catch (error) {
       handleLogError(error)
     }
@@ -60,7 +77,8 @@ function AdminPage() {
   const deleteOrder = async (orderId) => {
     try {
       await orderApi.deleteOrder(user, orderId)
-      fetchOrders()
+      await fetchData()
+      await fetchAnalytics()
     } catch (error) {
       handleLogError(error)
     }
@@ -81,11 +99,14 @@ function AdminPage() {
           <div className="admin-topbar">
 
             <div>
-              <p className="admin-tag">Admin Dashboard</p>
               <h1 className="admin-title">System Management</h1>
               <p className="admin-subtitle">
                 Manage users and monitor all orders in the system.
               </p>
+              <div className="admin-stats-inline">
+                <span>Total Users: {numberOfUsers}</span>
+                <span>Total Orders: {numberOfOrders}</span>
+              </div>
             </div>
 
             <div className="admin-actions">

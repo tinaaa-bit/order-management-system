@@ -16,8 +16,8 @@ public class PublicController {
     private final OrderService orderService;
 
     @GetMapping("/numberOfUsers")
-    public Integer getNumberOfUsers() {
-        return userService.getUsers().size();
+    public Long getNumberOfUsers() {
+        return userService.countUsersByRole("USER");
     }
 
     @GetMapping("/numberOfOrders")
