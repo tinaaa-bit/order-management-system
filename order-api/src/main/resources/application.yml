@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: order-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ordersdb
+    username: orderuser
+    password: orderpass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+app:
+  cors:
+    allowed-origins: http://localhost:3000
+
+  jwt:
+    secret: mysupersecurejwtsecretkeymysupersecurejwtsecretkeymysupersecurejwtsecretkey
+    expiration:
+      minutes: 1440
