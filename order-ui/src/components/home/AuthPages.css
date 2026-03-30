@@ -1,13 +1,15 @@
 :root {
-    --primary: #ed778d;
-    --primary-soft: #FC9D9A;
-    --warm: #F9CDAD;
-    --muted: #C8C8A9;
+    --primary: #e85d8e;
+    --primary-soft: #f4a3c0;
+    --muted: #dcdcdc;
     --green-soft: #83AF9B;
+
     --text-dark: #2b2b2b;
     --text-light: #6b6b6b;
     --white: #ffffff;
-    --page-bg: linear-gradient(135deg, #fff8f5 0%, #fff1ec 50%, #f9cdad 100%);
+
+    /* cleaner soft background */
+    --page-bg: linear-gradient(135deg, #fff5f7 0%, #ffecef 50%, #f5a3b3 100%);
 }
 
 .auth-page {
@@ -39,7 +41,7 @@
     align-items: center;
     justify-content: center;
     padding: 42px 34px;
-    background: #fffdfc;
+    background: #fffafb;
 }
 
 .auth-form-box {
@@ -49,7 +51,7 @@
 
 .auth-switch {
     display: inline-flex;
-    background: #ffe6e8;
+    background: #ffecef;
     padding: 6px;
     border-radius: 999px;
     margin-bottom: 24px;
@@ -124,7 +126,7 @@
     height: 48px;
     border: none;
     border-radius: 999px;
-    background: var(--primary);
+    background: linear-gradient(135deg, #e85d8e, #f4a3c0);
     color: var(--white);
     font-size: 1rem;
     font-weight: 700;
@@ -133,8 +135,9 @@
 }
 
 .auth-submit-btn:hover {
-    opacity: 0.94;
+    opacity: 0.95;
     transform: translateY(-1px);
+    background: linear-gradient(135deg, #d94a7c, #e88fb0);
 }
 
 .auth-error-box {
